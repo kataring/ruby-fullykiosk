@@ -4,7 +4,7 @@ require_relative "lib/fullykiosk/version"
 
 Gem::Specification.new do |spec|
   spec.name = "fullykiosk"
-  spec.version = Fullykiosk::VERSION
+  spec.version = FullyKiosk::VERSION
   spec.authors = ["Noriaki Katayama"]
   spec.email = ["kataring@gmail.com"]
 
@@ -29,6 +29,6 @@ Gem::Specification.new do |spec|
   spec.executables = spec.files.grep(%r{\Aexe/}) { |f| File.basename(f) }
   spec.require_paths = ["lib"]
 
-  spec.add_dependency "faraday", "~> 0.17"
+  spec.add_dependency "faraday"
   spec.add_dependency "faraday_middleware"
 end

@@ -1,8 +1,7 @@
 # frozen_string_literal: true
 
-require_relative "fullykiosk/version"
+require "fullykiosk/version"
+require "fullykiosk/client"
 
-module Fullykiosk
-  class Error < StandardError; end
-  # Your code goes here...
+module FullyKiosk
 end
