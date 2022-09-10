@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
-RSpec.describe Fullykiosk do
+RSpec.describe FullyKiosk do
   it "has a version number" do
-    expect(Fullykiosk::VERSION).not_to be nil
+    expect(FullyKiosk::VERSION).not_to be nil
   end
 
   it "does something useful" do
