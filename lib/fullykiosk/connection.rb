@@ -31,7 +31,7 @@ module FullyKiosk
       @connection ||= Faraday.new(url: @url) do |f|
         f.adapter Faraday.default_adapter
         f.request :url_encoded
-        f.response :json, :content_type => /\bjson$/
+        f.response :json, content_type: /\bjson$/
         f.use FaradayMiddleware::FollowRedirects
       end
     end

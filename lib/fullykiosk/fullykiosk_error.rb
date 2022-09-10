@@ -6,7 +6,7 @@ module FullyKiosk
     RESPONSE_STATUSTEXT = "statustext"
     RESPONSE_ERRORSTATUS = "Error"
 
-    def self.from_response(status, body, headers)
+    def self.from_response(_status, body, _headers)
       body ||= {}
 
       raise new(RESPONSE_ERRORSTATUS, body[RESPONSE_STATUSTEXT]) if body[RESPONSE_STATUS] == RESPONSE_ERRORSTATUS
@@ -30,6 +30,4 @@ module FullyKiosk
       end
     end
   end
-
 end
-
