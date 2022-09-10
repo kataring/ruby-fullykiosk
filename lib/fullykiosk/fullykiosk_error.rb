@@ -14,8 +14,8 @@ module FullyKiosk
   end
 
   class APIConnectionError < FullyKioskError
-    def self.faraday_error(e)
-      new("Connection with FullyKiosk API server failed. #{e.message}", e)
+    def self.faraday_error(err)
+      new("Connection with FullyKiosk API server failed. #{err.message}", err)
     end
 
     attr_reader :original_error
