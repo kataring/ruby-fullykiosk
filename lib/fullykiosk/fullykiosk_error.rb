@@ -2,20 +2,42 @@
 
 module FullyKiosk
   class FullyKioskError < StandardError
-    RESPONSE_STATUS = "status"
-    RESPONSE_STATUSTEXT = "statustext"
-    RESPONSE_ERRORSTATUS = "Error"
+    def self.from_response(response)
+      klass =
+        case response.status
+        when 400 then BadRequest
+        when 401 then Unauthorized
+        when 403 then Forbidden
+        when 404 then NotFound
+        when 500..599 then ServerError
+        else ServerError
+        end
 
-    def self.from_response(_status, body, _headers)
-      body ||= {}
+      klass&.new(response.body)
+    end
 
-      raise new(RESPONSE_ERRORSTATUS, body[RESPONSE_STATUSTEXT]) if body[RESPONSE_STATUS] == RESPONSE_ERRORSTATUS
+    attr_reader :status, :error_response
+
+    def initialize(message, status = nil, error_response = nil)
+      @status = status
+      @error_response = error_response
+      super(message)
     end
   end
 
-  class APIConnectionError < FullyKioskError
+  class BadRequest < StandardError; end
+
+  class Unauthorized < StandardError; end
+
+  class Forbidden < StandardError; end
+
+  class NotFound < StandardError; end
+
+  class ServerError < StandardError; end
+
+  class APIConnectionError < StandardError
     def self.faraday_error(err)
-      new("Connection with FullyKiosk API server failed. #{err.message}", err)
+      new("Connection with FullyKiosk API failed. #{err.message}", err)
     end
 
     attr_reader :original_error
