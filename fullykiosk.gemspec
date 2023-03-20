@@ -10,13 +10,13 @@ Gem::Specification.new do |spec|
 
   spec.summary = "Fully Kiosk Browser API client for Ruby"
   spec.description = "Fully Kiosk Browser API client for Ruby"
-  spec.homepage = "https://github.com/kataring/fullykiosk-ruby"
+  spec.homepage = "https://github.com/kataring/ruby-fullykiosk"
   spec.license = "MIT"
   spec.required_ruby_version = ">= 2.6.0"
   spec.metadata["allowed_push_host"] = "https://rubygems.org"
   spec.metadata["homepage_uri"] = spec.homepage
-  spec.metadata["source_code_uri"] = "https://github.com/kataring/fullykiosk-ruby"
-  spec.metadata["changelog_uri"] = "https://github.com/kataring/fullykiosk-ruby/CHANGELOG"
+  spec.metadata["source_code_uri"] = "https://github.com/kataring/ruby-fullykiosk"
+  spec.metadata["changelog_uri"] = "https://github.com/kataring/ruby-fullykiosk/CHANGELOG"
 
   # Specify which files should be added to the gem when it is released.
   # The `git ls-files -z` loads the files in the RubyGem that have been added into git.
