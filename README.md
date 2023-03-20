@@ -1,6 +1,6 @@
-# fullykiosk-ruby
+# ruby-fullykiosk
 
-Ruby client library for Fully Kiosk API
+Ruby wrapper for Fully Kiosk Browser REST interface.
 
 ## Installation
 
