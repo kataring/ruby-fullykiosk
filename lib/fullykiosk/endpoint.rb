@@ -16,6 +16,10 @@ module FullyKiosk
       send_command(PATH_REMOTE, "getDeviceInfo", devid: devid)
     end
 
+    def reboot_device(devid)
+      send_command(PATH_REMOTE, "rebootDevice", devid: devid, nowait: 1, persistent: 1)
+    end
+
     private
 
     def send_command(path, cmd, **params)
