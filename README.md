@@ -12,14 +12,14 @@ gem 'fullykiosk'
 
 And then execute:
 
-```
-$ bundle
+```bash
+bundle
 ```
 
 Or install it yourself as:
 
-```
-$ gem install fullykiosk
+```bash
+gem install fullykiosk
 ```
 
 ## Usage
@@ -27,11 +27,10 @@ $ gem install fullykiosk
 ```ruby
 client = FullyKiosk::Client.new(email: 'YOUR_EMAIL', api_key: 'YOUR_API_KEY')
 
-# get device list
-pp client.list_devices
-{"status"=>"OK",
- "statustext"=>"Found 5 devices",
- "devices"=>
+client.devices(123)
+client.device('12345-abcde')
+client.status('12345-abcde')
+client.reboot('12345-abcde')
 ```
 
 ## Contributing

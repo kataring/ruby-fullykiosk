@@ -22,7 +22,7 @@ module FullyKiosk
     end
 
     # Deviceの設定を取得する
-    def device_status(devid)
+    def status(devid)
       params = {}
       params[:devid] = devid
       send_command(PATH_REMOTE, "getDeviceInfo", params)
