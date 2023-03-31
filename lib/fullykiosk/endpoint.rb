@@ -5,25 +5,42 @@ module FullyKiosk
     PATH_CLOUD = "/cloud"
     PATH_REMOTE = "/remote"
 
-    def list_devices(filter: '', groupid: '')
+    # Deviceの情報を取得する
+    def device(devid, filter = nil)
       params = {}
-      params[:filter] = filter unless filter.empty?
-      params[:groupid] = groupid unless groupid.empty?
+      params[:devid] = devid
+      params[:filter] = filter unless filter.nil?
       send_command(PATH_CLOUD, "listDevices", params)
     end
 
-    def get_device_info(devid)
-      send_command(PATH_REMOTE, "getDeviceInfo", devid: devid)
+    # Groupに属するデバイスを取得する
+    def devices(groupid, filter = nil)
+      params = {}
+      params[:groupid] = groupid
+      params[:filter] = filter unless filter.nil?
+      send_command(PATH_CLOUD, "listDevices", params)
     end
 
-    def reboot_device(devid)
-      send_command(PATH_REMOTE, "rebootDevice", devid: devid, nowait: 1, persistent: 1)
+    # Deviceの設定を取得する
+    def device_status(devid)
+      params = {}
+      params[:devid] = devid
+      send_command(PATH_REMOTE, "getDeviceInfo", params)
+    end
+
+    # Deviceを再起動する
+    def reboot(devid)
+      params = {}
+      params[:devid] = devid
+      params[:nowait] = 1
+      params[:persistent] = 1
+      send_command(PATH_REMOTE, "rebootDevice", params)
     end
 
     private
 
-    def send_command(path, cmd, **params)
-      request(path, apiemail: @email, apikey: @api_key, type: "json", cmd: cmd, **params)
+    def send_command(path, cmd, params)
+      request(path, cmd: cmd, **params)
     end
   end
 end
