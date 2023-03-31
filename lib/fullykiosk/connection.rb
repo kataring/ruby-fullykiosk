@@ -13,6 +13,9 @@ module FullyKiosk
 
     def request(path, params)
       begin
+        params[:apiemail] = @email
+        params[:apikey] = @api_key
+        params[:type] = "json"
         response = connection.get(path, params)
       rescue Faraday::ClientError, Faraday::ServerError, Faraday::ConnectionFailed => e
         raise FullyKiosk::APIConnectionError.faraday_error(e)
